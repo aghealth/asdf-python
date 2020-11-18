@@ -17,7 +17,8 @@ install_python() {
   install_or_update_python_build
 
   echo "python-build $version $install_path"
-  $(python_build_path) "$version" "$install_path"
+  # $(python_build_path) "$version" "$install_path"
+  $(python_build_path) "-p" "$version" "$install_path" < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
 }
 
 install_default_python_packages() {
